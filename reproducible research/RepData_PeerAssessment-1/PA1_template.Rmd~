@@ -1,10 +1,9 @@
 Reproducible Research: Peer Assessment 1
 ========================================
-by Fabian Linzberger  
+by Rahul Ravindran
 github repo with RMarkdown source code:
-https://github.com/lefant/RepData_PeerAssessment1  
-online rendered version on github pages:
-http://lefant.net/RepData_PeerAssessment1/PA1_template.html  
+https://github.com/rahulravindran0108/data-science-coursera/reproducible%20research/RepData_PeerAssessment1
+
 
 ## Loading and preprocessing the data
 ```{r}

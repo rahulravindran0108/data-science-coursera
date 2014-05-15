@@ -2,7 +2,7 @@ Reproducible Research: Peer Assessment 1
 ========================================
 by Rahul Ravindran
 github repo with RMarkdown source code:
-https://github.com/rahulravindran0108/data-science-coursera/reproducible%20research/RepData_PeerAssessment1
+https://github.com/rahulravindran0108/data-science-coursera/tree/master/reproducible%20research/RepData_PeerAssessment-1
 
 
 ## Loading and preprocessing the data

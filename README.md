@@ -1,7 +1,7 @@
 data-science-coursera
 =====================
 
-johns Hopkins University  
+## johns Hopkins University  
 Data Science Specialization.  
 * Formulate context-relevant questions and hypotheses to drive data scientific research
 * Identify, obtain, and transform a data set to make it suitable for the production of statistical evidence communicated in written form

@@ -1,0 +1,53 @@
+Executive Summary
+--------------------------------------------------------
+We look at estimate an OLS model, regressing mileage on an automatic/manual dummy. Find a significantly negative effect of automatic on mileage. We redo the estimation as TSLS, using weight as an instument for automatic. These results are even more significant.
+
+Analysis
+--------------------------------------------------------
+We start by loading the **mtcars** data frame and recode **am** to a logical **automatic** variable.
+
+```{r echo=TRUE, eval=TRUE}
+data( mtcars )
+mtcars$automatic <- mtcars$am == 0
+attach( mtcars )
+```
+
+We do some exploratory data analysis on the distribution of the automatic variable (Appendix).
+
+We estimate the Ordinary Least Squares (OLS) model.
+
+```{r echo=TRUE, eval=TRUE}
+ols <- lm( mpg ~ automatic, data=mtcars )
+summary( ols )
+```
+
+There is a significant negative effect of automatic on milage.
+
+We redo the estimation using Two-Stage Least Squares (TSLS), using weight (**wt**) as an instrument for automatic.
+
+```{r echo=TRUE, eval=TRUE}
+tsls.fs <- lm(automatic ~ wt)
+tsls <- lm(mpg ~ tsls.fs$fitted.values)
+summary(tsls)
+```
+
+This coefficient is even more negative, and even more significant. We finally plot the residuals for both estimations (Appendix).
+
+The residuals of the OLS estimation appear to be normally distibuted, the TSLS somewhat less, though **n** is too small to make any real claims.
+
+Appendix: Figures
+--------------------------------------------------------
+```{r echo=TRUE, eval=TRUE, fig.width=10, fig.height=3}
+par( mfrow=c(1,2) )
+hist( mpg[which(automatic == TRUE)] )
+hist( mpg[which(automatic == FALSE)] )
+```
+
+We plot the residuals of the OLS and TSLS estimations.
+
+```{r echo=TRUE, eval=TRUE, fig.width=10, fig.height=3}
+par( mfrow=c(1,3) )
+hist( ols$residuals )
+hist(tsls.fs$residuals)
+hist( tsls$residuals )
+```

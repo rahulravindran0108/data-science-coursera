@@ -1,0 +1,32 @@
+# Report
+You work for Motor Trend, a magazine about the automobile industry. Looking at a data set of a collection of cars, they are interested in exploring the relationship between a set of variables and miles per gallon (MPG) (outcome). They are particularly interested in the following two questions:
+
+## Is an automatic or manual transmission better for MPG?
+
+```r
+output <- aggregate(mpg ~ am, data = mtcars, mean)
+output$am <- as.factor(output$am)
+levels(output$am) <- c("manual", "automatic")
+output
+```
+
+```
+##          am   mpg
+## 1    manual 17.15
+## 2 automatic 24.39
+```
+
+from the above data we find that the average mileage for automatic is more as compared to that of mileage per galon for a manual transmission car, hence automatic transmission is better as compared to that of manual transmission.
+## Quantifying how different is the MPG between automatic and manual transmissions?
+
+```r
+library(ggplot2)
+output <- mtcars[, c("mpg", "am")]
+output$am <- as.factor(output$am)
+levels(output$am) <- c("manual", "automatic")
+qplot(mpg, data = output, color = am, geom = c("density"), main = "comparison of mileage between automatic and manual transmission")
+```
+
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+
+Above figure shows a density plot between the mileage of a manual transmission vs an automatic transmission.
